@@ -27,7 +27,7 @@ function Cart() {
                     <img src={c.image} alt={c.title} />
                 </div>
                 
-                <div className='cartDate'>
+                <div className='cartData'>
                     <h3 className='cartTitle'>{c.title}</h3>
                     <h3 className='cartPrice'>{c.price} $</h3>
                     <button onClick={() => addDelete(c.id)} className='cartBTN'><FaTrashAlt /></button>

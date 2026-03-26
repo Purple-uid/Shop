@@ -26,8 +26,8 @@ function Home() {
                     throw new Error(`Ошибка ${response.status}`)
                 }
 
-                const date = await response.json()
-                setGoods(date)
+                const data = await response.json()
+                setGoods(data)
             } catch (error) {
                 if (error instanceof Error) {
                     console.error('Ошибка', error.message)
