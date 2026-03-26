@@ -1,7 +1,8 @@
 .user {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 60px;
+    padding: 0 16px;
 }
 
 .userProfile {
@@ -9,24 +10,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
-    width: auto;
-    border: 1px solid black;
-    padding: 20px;
+    max-width: 480px;
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    padding: 32px 24px;
     border-radius: 20px;
     gap: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
 }
 
 .userIcon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 72px; 
+    width: 72px;
     height: 72px;
     border-radius: 50%;
     font-size: 28px;
-    background-color: rgb(8, 68, 136);
-    color: cadetblue;
+    font-weight: 500;
+    background-color: #dbeafe;
+    color: #1d4ed8;
 }
 
 .userInfo {
@@ -34,91 +37,100 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
 }
 
 .userInfoFio {
     font-size: 18px;
+    font-weight: 600;
+    color: #111827;
 }
+
 .userInfoLogin {
     font-size: 14px;
-    opacity: 0.8;
+    color: #6b7280;
 }
 
 .userData {
     width: 100%;
-    border-top: 0.5px solid rgb(56, 56, 56);
-    padding: 0;
-    margin: 0;
+    border-top: 1px solid #f3f4f6;
     padding-top: 1rem;
+    margin-top: 4px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
-.userDataEmail {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    height: 30px;
-}
-
+.userDataEmail,
 .userDatalogin {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
-    height: 30px;
+    font-size: 14px;
+    padding: 4px 0;
+}
+
+.dataText {
+    margin: 0;
+    font-weight: 400;
+    color: #6b7280;
+}
+
+.dataLenght,
+.loginLenght {
+    margin: 0;
+    font-weight: 500;
+    color: #111827;
 }
 
 .cartDate {
     width: 100%;
-    border-top: 0.5px solid rgb(56, 56, 56);
+    border-top: 1px solid #f3f4f6;
     padding-top: 1rem;
     display: flex;
     flex-direction: row;
     gap: 12px;
 }
 
+.cartLenght,
 .loginPrice {
     flex: 1;
-    background: rgb(141, 141, 141);
-    border-radius: 10px;
-    padding: 12px;
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 12px;
+    padding: 16px 12px;
     text-align: center;
 }
 
-.cartLenght {
-    flex: 1;
-    background: rgb(141, 141, 141);
-    border-radius: 10px;
-    padding: 12px;
-    text-align: center;
-}
-.cartLenghtText {
-    margin: 0;
-}
-.cartLenghtRecount {
-    margin: 0;
-}
-
-.loginPriceText {
-    margin: 0;
-}
-
+.cartLenghtRecount,
 .loginPriceRecount {
     margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.cartLenghtText,
+.loginPriceText {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #6b7280;
+    display: block;
 }
 
 .userProfileBtn {
     width: 100%;
     padding: 10px;
-    border: 0.5px solid rgb(252, 98, 98);
+    border: 1px solid #fecaca;
     border-radius: 10px;
-    background: rgb(122, 0, 0);
-    color: rgb(252, 98, 98);
+    background: #fff1f2;
+    color: #dc2626;
     cursor: pointer;
     font-size: 14px;
     margin-top: 4px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #fee2e2;
+    }
 }
