@@ -35,6 +35,23 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+@media screen and (max-width: 680px) {
+    .Profiel {
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+    .profileImageBox {
+        flex: none; /* убираем фиксированные 350px */
+        width: 100%;
+    }
+    
+    .infoProfile {
+        width: 100%;
+    }
+}
+
 .priceBox {
     display: flex;
     align-items: center;

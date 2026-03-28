@@ -54,6 +54,6 @@
   }
 
   &.active {
-    background: red;
+    background: #f0f0f0;
   }
 }
