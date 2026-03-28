@@ -43,10 +43,10 @@
     }
 
     .profileImageBox {
-        flex: none; /* убираем фиксированные 350px */
+        flex: none;
         width: 100%;
     }
-    
+
     .infoProfile {
         width: 100%;
     }

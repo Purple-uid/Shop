@@ -8,13 +8,11 @@ function Login() {
     const [isLoginTab, setIsLoginTab] = useState<boolean>(true)
     const { login } = useAuth()
     
-    // Поля формы
     const [password, setPassword] = useState<string>('')
     const [loginValue, setLoginValue] = useState<string>('')
     const [fio, setFio] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     
-    // Ошибки
     const [error, setError] = useState<string>('')
 
     useEffect(() => {
@@ -23,7 +21,6 @@ function Login() {
         }
     }, [navigate])
 
-    // Очистка полей и ошибок при смене вкладки
     const toggleTab = (tab: boolean) => {
         setIsLoginTab(tab)
         setError('')

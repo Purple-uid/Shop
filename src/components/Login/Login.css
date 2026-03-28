@@ -7,7 +7,6 @@
     font-family: sans-serif;
 }
 
-/* Карточка формы */
 .registration-form {
     display: flex;
     flex-direction: column;
@@ -20,7 +19,6 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* Переключатель Вход/Регистрация */
 .login-toggle-container {
     display: flex;
     gap: 10px;
@@ -37,7 +35,6 @@
     transition: all 0.3s ease;
 }
 
-/* Контейнер для полей ввода */
 .Entrance {
     display: flex;
     flex-direction: column;
@@ -51,14 +48,13 @@
     font-size: 24px;
 }
 
-/* Стилизация инпутов */
 input {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid ;
     border-radius: 5px;
     padding-left: 15px;
-    box-sizing: border-box; /* Чтобы padding не раздувал ширину */
+    box-sizing: border-box;
     outline: none;
     transition: all 0.2s ease-in-out;
 
@@ -75,7 +71,6 @@ input:focus {
     border-color: black;
 }
 
-/* Кнопка отправки */
 .EntranceLogin {
     margin-top: 10px;
     border: none;
@@ -93,7 +88,6 @@ input:focus {
     opacity: 0.8;
 }
 
-/* Ошибки */
 .error-message {
     color: #ff4d4f;
     font-size: 14px;
