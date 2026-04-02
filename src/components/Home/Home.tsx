@@ -1,6 +1,8 @@
-import { useNavigate } from "react-router-dom"
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useCallback } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { useNavigate, type IndexRouteObject } from "react-router-dom"
 import gif from '../img/loading.gif'
+import axios from 'axios'
 import './Home.css'
 
 interface Goods{
@@ -14,42 +16,22 @@ interface Goods{
 function Home() {
     const navigate = useNavigate()
     const [ search, setSearch ] = useState('')
-    const [ goods, setGoods ] = useState<Goods[]>([])
-    const [ loading, setLoading ] = useState(true)
-
-    useEffect(() => {
-        async function getDate() {
-            try {
-                const response = await fetch('https://fakestoreapi.com/products')
-
-                if (!response.ok) {
-                    throw new Error(`Ошибка ${response.status}`)
-                }
-
-                const data = await response.json()
-                setGoods(data)
-            } catch (error) {
-                if (error instanceof Error) {
-                    console.error('Ошибка', error.message)
-                }
-            } finally {
-                setLoading(false)
-            }
-        }
-        getDate()
-    }, [])
+    const { data: goods, isLoading } = useQuery<Goods[]>({
+        queryKey: ['products'],
+        queryFn: () => axios.get('https://fakestoreapi.com/products').then(res => res.data)
+    })
 
     const filteredUsers = useMemo(() => {
-    return goods.filter(good =>
+    return (goods ?? []).filter(good =>
       good.category.toLowerCase().includes(search.toLowerCase())
     )
   }, [search, goods])
 
-  const handleSearch = useCallback((e: any) => {
+  const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value)
   }, [])
 
-  if (loading) return <img className="loadingAnimation" src={gif} alt="Preview" />
+  if (isLoading) return <img className="loadingAnimation" src={gif} alt="Preview" />
 
     return (
         <div className="main">

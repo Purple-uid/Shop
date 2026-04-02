@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from 'react'
-import type  { CartItem } from '../../types/types'
+import { useCartStore } from '../../store/cartStore'
 import { useAuth } from '../../context/AuthContext'
+import { useQuery } from '@tanstack/react-query'
 import gif from '../img/loading.gif'
+import axios from 'axios'
 import './Profile.css'
 
 interface Goods{
@@ -23,53 +24,23 @@ interface Rating {
 function Profile() {
     const { id } = useParams<{ id: string }>()
     const { isAuth } = useAuth()
-    const [ post, setPost ] = useState<Goods | null>(null)
-    const [ loading, setLoading ] = useState(true)
-    const [ basket, setBasket ] = useState<boolean>(() => {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-        return cart.some((item: CartItem) => item.id === Number(id))
+    const { cart, addItem, removeItem } = useCartStore()
+    const basket = cart.some((item) => item.id === Number(id))
+    const { data: post, isLoading } = useQuery<Goods>({
+        queryKey: ['product', id],
+        queryFn: () => axios.get(`https://fakestoreapi.com/products/${id}`).then(res => res.data)
     })
 
-    
-
-    useEffect(() => {
-        async function getData() {
-            try {
-                const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-
-                if (!response.ok) {
-                    throw new Error(`Ошибка сервера: ${response.status}`);
-                }
-
-                const date = await response.json()
-                setPost(date)
-            } catch (error) {
-                if(error instanceof Error) {
-                    console.error('Ошибка при запросе:', error.message)
-                }
-            } finally {
-                setLoading(false)
-            }
-        }
-        getData()
-    } ,[id])
-
-    if (loading || !post) return <img className="loadingAnimation" src={gif} alt="Preview" />
-
+    if (isLoading || !post) return <img className="loadingAnimation" src={gif} alt="Preview" />
     const addToCart = () => {
         if (!isAuth) return
 
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-        const exists = cart.find((item: CartItem) => item.id === post.id)
+        const exists = cart.find((item) => item.id === post.id)
 
         if (exists) {
-            const newCart = cart.filter((item: CartItem) => item.id !== post.id)
-            localStorage.setItem('cart', JSON.stringify(newCart))
-            setBasket(false)
+            removeItem(post.id)
         } else {
-            cart.push({ ...post, quantity: 1 })
-            localStorage.setItem('cart', JSON.stringify(cart))
-            setBasket(true)
+            addItem({ ...post, quantity: 1 })
         }
     }
 
