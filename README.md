@@ -8,6 +8,8 @@
 - React Router
 - useContext (авторизация)
 - Fake Store API
+- Zustand
+- Axion/React-Query
 
 ## Функционал
 - Каталог товаров с поиском по категории
