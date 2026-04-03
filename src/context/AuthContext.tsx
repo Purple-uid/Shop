@@ -9,7 +9,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const [isAuth, setIsAuth] = useState<boolean>(
+    const [isAuth, setIsAuth] = useState(
         localStorage.getItem('auth') === 'true'
     )
 

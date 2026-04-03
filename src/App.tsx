@@ -28,7 +28,6 @@ function Header() {
 }
 
 function App() {
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -42,17 +41,13 @@ function App() {
           element={
             <PrivateRoute>
               <Cart />
-            </PrivateRoute>
-          }
-        />
+            </PrivateRoute>} />
         <Route 
           path='/user' 
           element={
             <PrivateRoute>
               <User />
-            </PrivateRoute>
-          }
-        />
+            </PrivateRoute>} />
       </Routes>
       </AuthProvider>
     </BrowserRouter>

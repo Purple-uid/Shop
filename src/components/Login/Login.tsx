@@ -7,12 +7,10 @@ function Login() {
     const navigate = useNavigate()
     const [isLoginTab, setIsLoginTab] = useState<boolean>(true)
     const { login } = useAuth()
-    
     const [password, setPassword] = useState<string>('')
     const [loginValue, setLoginValue] = useState<string>('')
     const [fio, setFio] = useState<string>('')
     const [email, setEmail] = useState<string>('')
-    
     const [error, setError] = useState<string>('')
 
     useEffect(() => {
@@ -30,21 +28,21 @@ function Login() {
 
     const handleLogin = () => {
         if (!loginValue || !password) {
-            setError('Введите логин и пароль');
-            return;
+            setError('Введите логин и пароль')
+            return
         }
 
-        const savedUser = localStorage.getItem('user');
+        const savedUser = localStorage.getItem('user')
         if (savedUser) {
-            const userData = JSON.parse(savedUser);
+            const userData = JSON.parse(savedUser)
             if (userData.login === loginValue && userData.password === password) {
                 login()
-                navigate('/user');
+                navigate('/user')
             } else {
-                setError('Неверный логин или пароль');
+                setError('Неверный логин или пароль')
             }
         } else {
-            setError('Пользователь не найден');
+            setError('Пользователь не найден')
         }
     }
 
