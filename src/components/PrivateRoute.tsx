@@ -1,16 +1,16 @@
-import { Navigate } from "react-router-dom"
-import { useAuth } from '../context/AuthContext'
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../store/cartStore";
 
 interface Props {
-  children: JSX.Element
+  children: JSX.Element;
 }
 
 function PrivateRoute({ children }: Props) {
-    const { isAuth } = useAuth()
-    
-    if (!isAuth) return <Navigate to="/login" />
+  const auth = useAuth((state) => state.isAuth);
 
-    return children
+  if (!auth) return <Navigate to="/login" />;
+
+  return children;
 }
 
-export default PrivateRoute
+export default PrivateRoute;
