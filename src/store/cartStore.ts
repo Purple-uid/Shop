@@ -1,30 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { CartItem } from "../types/types";
+import type { CartStore, AuthContextType, AccountState } from "../types/types";
 
-interface CartStore {
-  cart: CartItem[];
-  addItem: (item: CartItem) => void;
-  removeItem: (id: number) => void;
-}
-
-interface AuthContextType {
-  isAuth: boolean;
-  login: () => void;
-  logout: () => void;
-}
-
-interface UserData {
-  fio?: string;
-  login?: string;
-  email?: string;
-  password?: string;
-}
-
-interface AccountState {
-  user: UserData;
-  setUser: (user: UserData) => void;
-}
 export const useCartStore = create<CartStore>()(
   persist(
     (set) => ({

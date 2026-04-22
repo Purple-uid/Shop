@@ -40,8 +40,11 @@ function Home() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleBtnSearch()}
         />
-        <button onClick={handleBtnSearch}>search</button>
+        <button className="searchButton" onClick={handleBtnSearch}>
+          search
+        </button>
       </div>
       <div className="mainTwo">
         {filteredUsers.map((good) => (

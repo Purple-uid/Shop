@@ -1,79 +1,103 @@
 .main {
-    padding: 16px;
+  padding: 16px;
 }
 
 .mainTwo {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
 }
 
 .products {
-    cursor: pointer;
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 12px;
-    box-sizing: border-box;
-    width: calc(25% - 16px);
-    transition: box-shadow 0.2s;
+  cursor: pointer;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+  width: calc(25% - 16px);
+  transition: box-shadow 0.2s;
 
-    &:hover {
-        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
+  &:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .productImage {
-    width: 200px;
-    height: 230px;
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
-} 
+  width: 200px;
+  height: 230px;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
 
 .inputHeader {
-        display: flex;
-        justify-content: center;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
 
 .input {
-    margin-bottom: 20px;
-    border: none;
-    outline: none;
-    height: 25px;
-    border: 1px solid ;
-    border-radius: 5px;
-    padding-left: 15px;
-    transition: all 0.2s ease-in-out;
+  margin-bottom: 0;
+  border: none;
+  outline: none;
+  height: 25px;
+  border: 1px solid;
+  border-radius: 5px;
+  padding-left: 15px;
+  transition: all 0.2s ease-in-out;
 
-    &:hover {
-        box-shadow: 0 0 3px 0  rgb(37, 37, 37);
-    }
+  &:hover {
+    box-shadow: 0 0 3px 0 rgb(37, 37, 37);
+  }
 
-    &:focus {
-        box-shadow: 0 0 3px 0  rgb(37, 37, 37);
-    }
+  &:focus {
+    box-shadow: 0 0 3px 0 rgb(37, 37, 37);
+  }
+}
+
+.searchButton {
+  height: 27px; /* Чуть выше инпута, чтобы компенсировать рамки */
+  margin-left: 10px;
+  padding: 0 20px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+.searchButton:hover {
+  background-color: #333; /* Тёмно-серый при наведении */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.searchButton:active {
+  transform: scale(0.95); /* Эффект нажатия */
 }
 
 @media screen and (min-width: 730px) {
-    .products {
-        width: calc(25% - 16px);
-    }
-    .input {
-        width: 40%;
-    }
+  .products {
+    width: calc(25% - 16px);
+  }
+  .input {
+    width: 40%;
+  }
 }
 
 @media screen and (max-width: 730px) {
-    .products {
-        width: calc(100% - 16px);
-    }
-    .input {
-        width: 70%;
-    }
+  .products {
+    width: calc(100% - 16px);
+  }
+  .input {
+    width: 70%;
+  }
 }
 
 .loadingAnimation {
-    margin: 0 50%;
-    margin-top: 300px;
+  margin: 0 50%;
+  margin-top: 300px;
 }
