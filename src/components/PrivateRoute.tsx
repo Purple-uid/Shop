@@ -13,5 +13,3 @@ export function PrivateRoute({ children }: Props) {
 
   return children;
 }
-
-export default PrivateRoute;

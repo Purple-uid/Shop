@@ -5,7 +5,7 @@ import Profile from "./components/Profile/Profile";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
-import PrivateRoute from "./components/PrivateRoute";
+import { PrivateRoute } from "./components/PrivateRoute";
 import { FaBasketShopping } from "react-icons/fa6";
 import { HiLightningBolt } from "react-icons/hi";
 import { IoPersonSharp } from "react-icons/io5";

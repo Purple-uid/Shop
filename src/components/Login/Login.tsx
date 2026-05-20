@@ -39,8 +39,6 @@ function Login() {
       return;
     }
 
-    // ТАК КАК МЫ ИСПОЛЬЗУЕМ ZUSTAND PERSIST:
-    // Мы можем проверить данные прямо из стора (они подгрузились из user_info автоматически)
     if (
       userStore.login === loginValue &&
       userStore.password === (password as any)

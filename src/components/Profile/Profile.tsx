@@ -10,9 +10,7 @@ import "./Profile.css";
 function Profile() {
   const { id } = useParams<{ id: string }>();
   const auth = useAuth((state) => state.isAuth);
-  const cart = useCartStore((state) => state.cart);
-  const addItem = useCartStore((state) => state.addItem);
-  const removeItem = useCartStore((state) => state.removeItem);
+  const { cart, addItem, removeItem } = useCartStore();
   const basket = cart.some((item) => item.id === Number(id));
   const { data: post, isLoading } = useQuery<Goods>({
     queryKey: ["product", id],
