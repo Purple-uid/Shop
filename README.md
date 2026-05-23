@@ -22,3 +22,6 @@ npm install
 
 ## Запуск
 npm run dev
+
+## Ссылка на сайт
+https://shop-six-pied.vercel.app/
