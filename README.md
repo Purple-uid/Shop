@@ -1,6 +1,8 @@
 # Nova Shop
 
-Интернет-магазин на React + TypeScript. Данные товаров — [DummyJSON](https://dummyjson.com/).
+Интернет-магазин на React + TypeScript.
+
+**Деплой:** [shop-six-pied.vercel.app](https://shop-six-pied.vercel.app/)
 
 ## Технологии
 
