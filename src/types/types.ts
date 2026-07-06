@@ -21,6 +21,7 @@ export interface CartStore {
   cart: CartItem[];
   addItem: (item: CartItem) => void;
   removeItem: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
 }
 
 export interface AuthContextType {

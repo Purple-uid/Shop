@@ -1,136 +1,127 @@
-.user {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    padding: 0 16px;
+.userPage {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+  animation: fadeIn 0.3s ease;
 }
 
-.userProfile {
-    display: flex;
+.userCard {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  gap: 20px;
+}
+
+.userHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.userName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.userLogin {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.userDetails {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.detailValue {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.userStats {
+  display: flex;
+  gap: 10px;
+}
+
+.statCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.statNumber {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+
+  &:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: #fef2f2;
+  }
+}
+
+@media (max-width: 480px) {
+  .userStats {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 480px;
-    width: 100%;
-    border: 1px solid #e5e7eb;
-    padding: 32px 24px;
-    border-radius: 20px;
-    gap: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-}
-
-.userIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    border-radius: 50%;
-    font-size: 28px;
-    font-weight: 500;
-    background-color: #dbeafe;
-    color: #1d4ed8;
-}
-
-.userInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
-
-.userInfoFio {
-    font-size: 18px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.userInfoLogin {
-    font-size: 14px;
-    color: #6b7280;
-}
-
-.userData {
-    width: 100%;
-    border-top: 1px solid #f3f4f6;
-    padding-top: 1rem;
-    margin-top: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.userDataEmail,
-.userDatalogin {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    padding: 4px 0;
-}
-
-.dataText {
-    margin: 0;
-    font-weight: 400;
-    color: #6b7280;
-}
-
-.dataLenght,
-.loginLenght {
-    margin: 0;
-    font-weight: 500;
-    color: #111827;
-}
-
-.cartDate {
-    width: 100%;
-    border-top: 1px solid #f3f4f6;
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
-.cartLenght,
-.loginPrice {
-    flex: 1;
-    background: #f9fafb;
-    border: 1px solid #f3f4f6;
-    border-radius: 12px;
-    padding: 16px 12px;
-    text-align: center;
-}
-
-.cartLenghtRecount,
-.loginPriceRecount {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.cartLenghtText,
-.loginPriceText {
-    margin: 4px 0 0;
-    font-size: 12px;
-    color: #6b7280;
-    display: block;
-}
-
-.userProfileBtn {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #fecaca;
-    border-radius: 10px;
-    background: #fff1f2;
-    color: #dc2626;
-    cursor: pointer;
-    font-size: 14px;
-    margin-top: 4px;
-    transition: all 0.2s ease;
-
-    &:hover {
-        background-color: #fee2e2;
-    }
+  }
 }

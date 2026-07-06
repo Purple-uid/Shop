@@ -7,16 +7,39 @@ export const useCartStore = create<CartStore>()(
     (set) => ({
       cart: [],
 
-      addItem: (item) => set((state) => ({ cart: [...state.cart, item] })),
+      addItem: (item) =>
+        set((state) => {
+          const existing = state.cart.find((el) => el.id === item.id);
+          if (existing) {
+            return {
+              cart: state.cart.map((el) =>
+                el.id === item.id
+                  ? { ...el, quantity: el.quantity + 1 }
+                  : el,
+              ),
+            };
+          }
+          return { cart: [...state.cart, { ...item, quantity: 1 }] };
+        }),
 
       removeItem: (id) =>
         set((state) => ({
           cart: state.cart.filter((el) => el.id !== id),
         })),
+
+      updateQuantity: (id, quantity) =>
+        set((state) => {
+          if (quantity < 1) {
+            return { cart: state.cart.filter((el) => el.id !== id) };
+          }
+          return {
+            cart: state.cart.map((el) =>
+              el.id === id ? { ...el, quantity } : el,
+            ),
+          };
+        }),
     }),
-    {
-      name: "basket",
-    },
+    { name: "basket" },
   ),
 );
 
@@ -27,9 +50,7 @@ export const useAuth = create<AuthContextType>()(
       login: () => set({ isAuth: true }),
       logout: () => set({ isAuth: false }),
     }),
-    {
-      name: "auth",
-    },
+    { name: "auth" },
   ),
 );
 
@@ -39,8 +60,6 @@ export const useAccount = create<AccountState>()(
       user: {},
       setUser: (userdata) => set({ user: userdata }),
     }),
-    {
-      name: "user-info",
-    },
+    { name: "user-info" },
   ),
 );

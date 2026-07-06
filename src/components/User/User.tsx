@@ -1,6 +1,6 @@
-import { useAuth, useAccount } from "../../store/cartStore";
-import { useCartStore } from "../../store/cartStore";
+import { useAuth, useAccount, useCartStore } from "../../store/cartStore";
 import type { CartItem } from "../../types/types";
+import { FiLogOut } from "react-icons/fi";
 import "./User.css";
 
 function User() {
@@ -8,46 +8,48 @@ function User() {
   const user = useAccount((state) => state.user);
   const cart = useCartStore((state) => state.cart);
 
-  const itemCount = cart.length;
-
+  const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart
-    .reduce((sum: number, item: CartItem) => {
-      return sum + item.price;
-    }, 0)
+    .reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0)
     .toFixed(2);
 
   return (
-    <div className="user">
-      <div className="userProfile">
-        <div className="userIcon">
-          <span>{user.fio?.[0]}</span>
-        </div>
-        <div className="userInfo">
-          <span className="userInfoFio">{user.fio || "Гость"}</span>
-          <span className="userInfoLogin">@{user.login || ""}</span>
-        </div>
-        <div className="userData">
-          <div className="userDataEmail">
-            <h3 className="dataText">Email</h3>
-            <h3 className="dataLenght">{user.email || "Не указан"}</h3>
+    <div className="userPage">
+      <div className="userCard">
+        <div className="userHeader">
+          <div className="userAvatar">
+            {user.fio?.[0] || "G"}
           </div>
-          <div className="userDatalogin">
-            <h3 className="dataText">Логин</h3>
-            <h3 className="loginLenght">{user.login || "Goust"}</h3>
+          <div>
+            <h2 className="userName">{user.fio || "Гость"}</h2>
+            <span className="userLogin">@{user.login || "unknown"}</span>
           </div>
         </div>
-        <div className="cartDate">
-          <div className="cartLenght">
-            <h1 className="cartLenghtRecount">{itemCount}</h1>
-            <span className="cartLenghtText">товаров в корзине</span>
+
+        <div className="userDetails">
+          <div className="detailRow">
+            <span>Email</span>
+            <span className="detailValue">{user.email || "—"}</span>
           </div>
-          <div className="loginPrice">
-            <h1 className="loginPriceRecount">{totalPrice}</h1>
-            <span className="loginPriceText">сумма корзины</span>
+          <div className="detailRow">
+            <span>Логин</span>
+            <span className="detailValue">{user.login || "—"}</span>
           </div>
         </div>
-        <button className="userProfileBtn" onClick={logout}>
-          Выйти из аккаунта
+
+        <div className="userStats">
+          <div className="statCard">
+            <span className="statNumber">{itemCount}</span>
+            <span className="statLabel">товаров</span>
+          </div>
+          <div className="statCard">
+            <span className="statNumber">{totalPrice} $</span>
+            <span className="statLabel">сумма корзины</span>
+          </div>
+        </div>
+
+        <button className="logoutBtn" onClick={logout}>
+          <FiLogOut size={16} /> Выйти
         </button>
       </div>
     </div>

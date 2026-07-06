@@ -1,32 +1,38 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import { useAuth } from "./store/cartStore";
+import { useAuth, useCartStore } from "./store/cartStore";
 import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
 import User from "./components/User/User";
 import { PrivateRoute } from "./components/PrivateRoute";
-import { FaBasketShopping } from "react-icons/fa6";
-import { HiLightningBolt } from "react-icons/hi";
-import { IoPersonSharp } from "react-icons/io5";
+import { FiShoppingCart, FiZap, FiUser } from "react-icons/fi";
 import "./App.css";
 
 function Header() {
   const auth = useAuth((state) => state.isAuth);
+  const cartCount = useCartStore((state) =>
+    state.cart.reduce((sum, item) => sum + item.quantity, 0),
+  );
 
   return (
     <header className="header">
       <NavLink className="logo" to="/">
-        <HiLightningBolt className="logoIcon" /> Nova Shop
+        <FiZap className="logoIcon" /> Nova Shop
       </NavLink>
       <div className="headerRight">
         {auth && (
-          <NavLink className="headerBtn" to="/cart">
-            <FaBasketShopping />
+          <NavLink className="headerBtn" to="/cart" aria-label="Корзина">
+            <FiShoppingCart size={20} />
+            {cartCount > 0 && <span className="cartBadge">{cartCount}</span>}
           </NavLink>
         )}
-        <NavLink className="headerBtn" to="/login">
-          <IoPersonSharp />
+        <NavLink
+          className="headerBtn"
+          to={auth ? "/user" : "/login"}
+          aria-label={auth ? "Профиль" : "Войти"}
+        >
+          <FiUser size={20} />
         </NavLink>
       </div>
     </header>
@@ -57,6 +63,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
