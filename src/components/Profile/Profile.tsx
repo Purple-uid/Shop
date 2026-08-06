@@ -79,7 +79,12 @@ function Profile() {
             className={inCart ? "addToCartBtn inCart" : "addToCartBtn"}
             onClick={handleCart}
           >
-            {inCart ? <><FiCheck size={18} /> В корзине</> : <><FiShoppingCart size={18} /> В корзину</>}
+            {inCart ? <>
+              <FiCheck size={18} /> В корзине
+            </> : 
+            <>
+              <FiShoppingCart size={18} /> В корзину
+            </>}
           </button>
 
           <p className="profileDescription">

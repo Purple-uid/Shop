@@ -120,7 +120,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 24px;
+  padding: 10px 40px;
   border: none;
   border-radius: var(--radius);
   background: var(--primary);

@@ -6,6 +6,8 @@
 }
 
 .searchBar {
+  display: flex;
+  gap: 8px;
   position: relative;
   max-width: 400px;
   margin: 0 auto 28px;
@@ -33,6 +35,23 @@
 
   &:focus {
     border-color: var(--accent);
+  }
+}
+
+.home-btn {
+  display: inline-flex;
+  padding: 0 12px 0 13px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  outline: none;
+  transition: border var(--transition);
+  background: var(--card-bg);
+
+  &:hover {
+    border-color: var(--danger);
   }
 }
 
@@ -129,8 +148,6 @@
 .banner::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
   pointer-events: none;
 }
 

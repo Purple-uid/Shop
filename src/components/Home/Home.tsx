@@ -51,8 +51,8 @@ function Home() {
             <span className="bannerTag">Летняя распродажа</span>
             <h2 className="bannerTitle">Скидки до 50%</h2>
             <p className="bannerText">На популярные категории товаров</p>
-            <button className="bannerBtn" onClick={() => setAppliedSearch("smartphones")}>
-              Смотреть смартфоны
+            <button className="bannerBtn" onClick={() => setAppliedSearch("beauty")}>
+              Смотреть косметику
             </button>
           </div>
         </div>
@@ -69,6 +69,11 @@ function Home() {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
+        {appliedSearch && (
+          <button className="home-btn" onClick={() => setAppliedSearch("")}>
+            ×
+          </button>
+        )}
       </div>
 
       {appliedSearch && (
